@@ -2,14 +2,20 @@ INPUT_FILE_PATH = "././input/d4/problem.txt"
 
 def main():
     with open(INPUT_FILE_PATH, "r") as file:
-        total_sum = 0
+        winners_record = []
+        total_cards = []
         i = 0
         for line in file:
             i += 1
             winners = calculate_winners(*parse_line(line))
-            if winners > 0:
-                total_sum += 2 ** (winners - 1)
-        print(total_sum)
+            winners_record.append(winners)
+            total_cards.append(1)
+        
+        for i in range(len(winners_record)):
+            for j in range(winners_record[i]):
+                total_cards[i + j + 1] += total_cards[i]
+
+        print(sum(total_cards))
 
 def parse_line(line):
     winning, ours_whole = line.strip().split(" | ")
