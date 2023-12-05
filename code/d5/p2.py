@@ -102,21 +102,21 @@ def get_mapping(in_map, seeds):
                     output.append((seed_start - source_start + dest_start, seed_length))
                 # *Seed Below*
                 # Source: <----[------]--->
-                # Seed:     {-{}}--}--}
+                # Seed:    <{-{}}--}--}
                 elif seed_start < source_start <= seed_start + seed_length <= source_start + source_length:
                     inside_length = seed_start + seed_length - source_start
                     output.append((dest_start, inside_length))
                     input_seeds.append((seed_start, source_start - seed_start))
                 # *Seed Above*
                 # Source: <---[------]---->
-                # Seed:       {---{--{}-}
+                # Seed:       {---{--{}-}>
                 elif source_start <= seed_start <= source_start + source_length < seed_start + seed_length:
                     inside_start, inside_length = seed_start, source_start + source_length - seed_start
                     output.append((inside_start - source_start + dest_start, inside_length))
                     input_seeds.append((source_start + source_length, seed_start + seed_length - source_start - source_length))
                 # *Seed Surrounds*
                 # Source: <----[----]---->
-                # Seed:     {-{------}-}
+                # Seed:    <{-{------}-}>
                 elif seed_start < source_start and source_start + source_length < seed_start + seed_length:
                     output.append((dest_start, source_length))
                     if source_start - seed_start > 0:
