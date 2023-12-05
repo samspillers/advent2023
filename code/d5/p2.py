@@ -124,7 +124,6 @@ def get_mapping(in_map, seeds):
                     if seed_start + seed_length - source_start - source_length > 0:
                         input_seeds.append((source_start + source_length, seed_start + seed_length - source_start - source_length))
                 else:
-                    print(dest_start, source_start, source_length, seed_start, seed_length)
                     raise Exception("Shouldn't happen")
                 break
 
