@@ -13,11 +13,9 @@ def main():
 
         total_sum = 0
         for i, e in enumerate(hands):
-            # print(len(hands) - i, e)
             total_sum += (len(hands) - i) * e[1]
 
         print(total_sum)
-        # sorted_hands = sorted(hands, key=hand_compare)
 
 def parse_line(line):
     split_line = line.strip().split(" ")
@@ -28,8 +26,6 @@ def parse_line(line):
 def get_hand_type(cards):
     counts = [0 for _ in range(len(CARDS))]
     
-    # print(cards)
-
     for card in cards:
         counts[CARDS.index(card)] += 1
     
@@ -69,6 +65,7 @@ def hand_compare(cards_a, cards_b):
     raise Exception("Shouldn't get here")
 
 
+# Grabbed from https://www.geeksforgeeks.org/sorting-algorithms-in-python/
 # Python3 program for Bubble Sort Algorithm Implementation
 def bubbleSort(arr, comp):
      
